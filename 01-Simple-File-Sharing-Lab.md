@@ -42,6 +42,8 @@ The primary objective is to demonstrate how network shares function when passwor
 4. Uncheck Account is disabled.
 5. Click Apply and OK.
 
+![Network Mapping](/Screenshots/anonymous-network-mapping.png)
+
 #### Step 3: Configure Local Group Policy (Security Model)
 > Goal: Force incoming SMB sessions to authenticate as Guest
 
@@ -50,10 +52,15 @@ The primary objective is to demonstrate how network shares function when passwor
   Computer Configuration → Windows Settings → Security Settings → Local Policies → Security Options
 3. Locate: Network access: Sharing and security model for local accounts.
 4. Set policy to: Guest only - local users authenticate as Guest.
+
+![Local Group Policy](/Screenshots/Local-Group-Policy-Settings.png)
+
 5. Force policy update via Command Prompt:
 ```cmd
 gpupdate /force
 ```
+
+![Force policy update](/Screenshots/cmd.png)
 
 #### Step 4: Configure Sharing Wizard & Turn Off Password Protection
 > Goal: Disables credential prompts for SMB network access
@@ -65,14 +72,24 @@ gpupdate /force
 5. Expand All Networks → Select Turn off password protected sharing.
 6. Save changes.
 
+![Configure Sharing Wizard & Turn Off Password Protection](/Screenshots/SMB-network-access-Settings.png)
+
 #### Step 5: Create Share & Assign Read-Only Guest Permissions
 > Goal: Configuring folder-level SMB share permissions
 
+
+  
 1. Create directory D:\Data on PC1.
 2. Create test file D:\Data\Data.txt.
+
+![ Create test file ](/Screenshots/test_file.png)
+  
 3. Right-click D:\Data → Properties → Sharing (or Give access to → Specific people...).
 4. Add the Guest account.
 5. Set Permission Level to Read.
+
+![Add the Guest accoun](/Screenshots/add_guest_account.png)
+  
 6. Confirm SMB share creation (\\<HOST_NAME>\Data or \\192.0.2.10\Data).
 
 #### Step 6: Configure Windows Defender Firewall Rules
@@ -81,3 +98,5 @@ gpupdate /force
 1. Open Windows Defender Firewall with Advanced Security (wf.msc).
 2. Enable Inbound Rules for File and Printer Sharing (SMB-In) across Private and Public profiles.
 3. Alternatively, enable File and Printer Sharing via control firewall.cpl → Allow an app or feature through Windows Defender Firewall.
+
+![ Configure Windows Defender Firewall Rules ](/Screenshots/Windows_Firewall_Settings.png)
