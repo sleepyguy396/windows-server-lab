@@ -68,9 +68,9 @@ gpupdate /force
 #### Step 5: Create Share & Assign Read-Only Guest Permissions
 > Goal: Configuring folder-level SMB share permissions
 
-1. Create directory C:\Data on PC1.
-2. Create test file C:\Data\Data.txt.
-3. Right-click C:\Data → Properties → Sharing (or Give access to → Specific people...).
+1. Create directory D:\Data on PC1.
+2. Create test file D:\Data\Data.txt.
+3. Right-click D:\Data → Properties → Sharing (or Give access to → Specific people...).
 4. Add the Guest account.
 5. Set Permission Level to Read.
 6. Confirm SMB share creation (\\<HOST_NAME>\Data or \\192.0.2.10\Data).
